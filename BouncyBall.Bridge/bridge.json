@@ -1,0 +1,19 @@
+{
+  "output": "$(OutDir)/bridge/",
+
+  "console": {
+    "enabled": true
+  },
+
+  "sourceMap": {
+    "enabled": true
+  },
+
+  "reflection": {
+    "disabled": false
+  },
+
+  "generateTypeScript": false,
+
+  "cleanOutputFolderBeforeBuild": false
+}
