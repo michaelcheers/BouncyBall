@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncy Ball - How to Play</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: #4ecdc4;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h2 {
+            color: #ffd93d;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ffd93d;
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: #4ecdc4;
+            margin: 15px 0 10px 0;
+        }
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .control-item {
+            background: rgba(255,255,255,0.08);
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .key {
+            background: linear-gradient(145deg, #3a3a4a, #2a2a3a);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 3px 0 #1a1a2a, 0 4px 8px rgba(0,0,0,0.3);
+            border: 1px solid #4a4a5a;
+        }
+        .key-combo {
+            display: flex;
+            gap: 5px;
+        }
+        .key-small {
+            padding: 6px 10px;
+            min-width: auto;
+        }
+        .description {
+            flex: 1;
+        }
+        .tip {
+            background: rgba(78, 205, 196, 0.15);
+            border-left: 4px solid #4ecdc4;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .warning {
+            background: rgba(255, 107, 107, 0.15);
+            border-left: 4px solid #ff6b6b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        .stats-display {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #00ff00;
+        }
+        .color-sample {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 5px;
+            border: 2px solid #fff;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bouncy Ball</h1>
+        <p class="subtitle">A Physics-Based Ball Simulation Game</p>
+
+        <!-- Getting Started -->
+        <div class="section">
+            <h2>Getting Started</h2>
+            <p>Welcome to Bouncy Ball! Control a ball that moves based on physics simulation with velocity, drag, and gravity.</p>
+            <div class="tip">
+                <strong>Quick Start:</strong> Click "New Game", enter a world name, and press Enter to start playing!
+            </div>
+            <h3>Main Menu</h3>
+            <ul>
+                <li><strong>New Game</strong> - Start a fresh game session</li>
+                <li><strong>Load Game</strong> - Load a previously saved game (stored in browser localStorage)</li>
+                <li><strong>Quit</strong> - Exit the game</li>
+            </ul>
+        </div>
+
+        <!-- Basic Movement -->
+        <div class="section">
+            <h2>Basic Movement Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">W / Up</div>
+                    <div class="description">Accelerate upward</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">S / Down</div>
+                    <div class="description">Accelerate downward</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">A / Left</div>
+                    <div class="description">Accelerate left</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">D / Right</div>
+                    <div class="description">Accelerate right</div>
+                </div>
+            </div>
+            <div class="tip">
+                <strong>Note:</strong> When multiplayer is enabled, Arrow keys control Player 1 and WASD controls Player 2.
+            </div>
+        </div>
+
+        <!-- Physics Controls -->
+        <div class="section">
+            <h2>Physics Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">V</div>
+                    <div class="description">Enable bouncy mode (ball bounces off walls)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Z</div>
+                    <div class="description">Disable bouncy mode (ball wraps around screen)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">N</div>
+                    <div class="description">Increase gravity</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">O</div>
+                    <div class="description">Decrease gravity</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">R</div>
+                    <div class="description">Reset gravity to 0</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">X</div>
+                    <div class="description">Stop all movement (velocity = 0)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">L</div>
+                    <div class="description">Reverse velocity direction</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">J</div>
+                    <div class="description">Remove all drag (drag = 1.0)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">U</div>
+                    <div class="description">Reset drag to normal (0.99)</div>
+                </div>
+            </div>
+
+            <h3>Acceleration Controls</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">0</div>
+                    <div class="description">Increase acceleration</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">1</div>
+                    <div class="description">Decrease acceleration</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">2</div>
+                    <div class="description">Reset acceleration to default (0.1)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">3</div>
+                    <div class="description">Boost in current direction</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Position Controls -->
+        <div class="section">
+            <h2>Position Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">B</div>
+                    <div class="description">Teleport to top-left corner (0,0)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">M</div>
+                    <div class="description">Teleport to center of screen</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">T</div>
+                    <div class="description">Teleport to random position</div>
+                </div>
+            </div>
+
+            <h3>Mouse Controls</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">Left Click</div>
+                    <div class="description">Move Player 2 to mouse position (or Player 1 if mouse mode enabled)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Right Click</div>
+                    <div class="description">Move Player 1 to mouse position (or Player 2 if mouse mode enabled)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">.</div>
+                    <div class="description">Enable mouse control for Player 1</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">?</div>
+                    <div class="description">Disable mouse control for Player 1</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Controls -->
+        <div class="section">
+            <h2>Ball Color Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">C / Enter</div>
+                    <div class="description">Random color (includes alpha)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">'</div>
+                    <div class="description">Random color (keeps current alpha)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Q</div>
+                    <div class="description"><span class="color-sample" style="background:white"></span>Set color to White</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">G</div>
+                    <div class="description"><span class="color-sample" style="background:black"></span>Set color to Black</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">P</div>
+                    <div class="description"><span class="color-sample" style="background:hotpink"></span>Set color to Hot Pink</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">[</div>
+                    <div class="description"><span class="color-sample" style="background:orange"></span>Set color to Orange</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">I</div>
+                    <div class="description">Make ball invisible (transparent)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">H</div>
+                    <div class="description">Show ball (restore color)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">8</div>
+                    <div class="description">Random transparency (white ball)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">;</div>
+                    <div class="description">Decrease alpha (more transparent)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">\</div>
+                    <div class="description">Increase alpha (more opaque)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">]</div>
+                    <div class="description">Set alpha to full (255)</div>
+                </div>
+            </div>
+
+            <h3>Ball Texture</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">,</div>
+                    <div class="description">Toggle between white and black ball texture</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Controls -->
+        <div class="section">
+            <h2>Background Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">K</div>
+                    <div class="description">Increase blue channel in background</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F</div>
+                    <div class="description">Decrease blue channel in background</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">PageUp</div>
+                    <div class="description">Stop dynamic background color updates</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">PageDown</div>
+                    <div class="description">Enable dynamic background color</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">/</div>
+                    <div class="description">Set random static background color</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">End</div>
+                    <div class="description"><span class="color-sample" style="background:orange"></span>Set background to Orange</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">9</div>
+                    <div class="description">Ball color follows background color</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Backspace</div>
+                    <div class="description">Stop ball color following background</div>
+                </div>
+            </div>
+            <div class="tip">
+                <strong>Dynamic Background:</strong> By default, the background color changes based on the ball's X and Y position using cosine waves!
+            </div>
+        </div>
+
+        <!-- Multiplayer -->
+        <div class="section">
+            <h2>Multiplayer Controls</h2>
+            <p>Add a second ball controlled by WASD (Player 2) while you control with Arrow keys (Player 1).</p>
+
+            <h3>Enable Multiplayer</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">Y</div>
+                    <div class="description">Enable multiplayer (Player 2 at current position)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Tab</div>
+                    <div class="description">Enable multiplayer (Player 2 at origin)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F12</div>
+                    <div class="description">Enable multiplayer with all features reset</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Home</div>
+                    <div class="description">Enable multiplayer</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Alt</div>
+                    <div class="description">Disable multiplayer</div>
+                </div>
+            </div>
+
+            <h3>Player 2 Movement (WASD when multiplayer enabled)</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">W</div>
+                    <div class="description">Player 2 accelerate up</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">A</div>
+                    <div class="description">Player 2 accelerate left</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">S</div>
+                    <div class="description">Player 2 accelerate down</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">D</div>
+                    <div class="description">Player 2 accelerate right</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Delete</div>
+                    <div class="description">Stop Player 2 movement</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F10</div>
+                    <div class="description">Teleport Player 2 to origin</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F11</div>
+                    <div class="description">Teleport Player 2 to center</div>
+                </div>
+            </div>
+
+            <h3>Player 2 Color Controls</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">CapsLock</div>
+                    <div class="description">Random color for Player 2</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F5</div>
+                    <div class="description">Make Player 2 invisible</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F6</div>
+                    <div class="description">Show Player 2</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F7</div>
+                    <div class="description">Player 2 to White</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F8</div>
+                    <div class="description">Player 2 to Black</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F9</div>
+                    <div class="description">Player 2 to Hot Pink</div>
+                </div>
+            </div>
+
+            <h3>Edge of Screen Death (Multiplayer Mode)</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">Left Shift</div>
+                    <div class="description">Enable edge death for Player 2</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Right Shift</div>
+                    <div class="description">Enable edge death for Player 1</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Left Ctrl</div>
+                    <div class="description">Disable edge death for Player 2</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Right Ctrl</div>
+                    <div class="description">Disable edge death for Player 1</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">NumLock</div>
+                    <div class="description">Player disappears when dies (instead of respawn)</div>
+                </div>
+            </div>
+
+            <h3>Multiplayer Controls Toggle</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">-</div>
+                    <div class="description">Disable Player 2 controls</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">+</div>
+                    <div class="description">Enable Player 2 controls</div>
+                </div>
+            </div>
+
+            <h3>Tag Mode</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key-combo">
+                        <div class="key key-small">Ctrl</div>
+                        <div class="key key-small">T</div>
+                    </div>
+                    <div class="description">Toggle tag mode</div>
+                </div>
+            </div>
+
+            <h3>CPU Multiplayer</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">Win</div>
+                    <div class="description">Spawn CPU-controlled ball that mirrors your movement</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Mode Controls -->
+        <div class="section">
+            <h2>Game Mode Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">Space</div>
+                    <div class="description">Reset game to default state</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">E / Esc</div>
+                    <div class="description">Return to main menu (auto-saves)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Shift</div>
+                    <div class="description">Enable "edge of screen = game over"</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">Ctrl</div>
+                    <div class="description">Disable "edge of screen = game over"</div>
+                </div>
+            </div>
+
+            <h3>Drawing Mode</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">4</div>
+                    <div class="description">Disable screen clearing (creates trails)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">5</div>
+                    <div class="description">Enable screen clearing (normal mode)</div>
+                </div>
+            </div>
+
+            <h3>Stop When Not Moving</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">6</div>
+                    <div class="description">Enable instant stop when no input</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">7</div>
+                    <div class="description">Disable instant stop (normal physics)</div>
+                </div>
+            </div>
+
+            <h3>Freeze/Unfreeze</h3>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">F1</div>
+                    <div class="description">Freeze game (disable rendering)</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F2</div>
+                    <div class="description">Unfreeze game</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F3</div>
+                    <div class="description">Disable controls</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">F4</div>
+                    <div class="description">Enable controls</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display -->
+        <div class="section">
+            <h2>Display Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="key">- (NumPad)</div>
+                    <div class="description">Toggle fullscreen</div>
+                </div>
+                <div class="control-item">
+                    <div class="key">* (NumPad)</div>
+                    <div class="description">Toggle background music</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HUD -->
+        <div class="section">
+            <h2>Game Display (HUD)</h2>
+            <p>The game displays real-time statistics in the top-right corner:</p>
+            <div class="stats-display">
+                Speed: 5.23pix/frame<br>
+                Maximum Speed: 12.45pix/frame<br>
+                Elevation: 340pix<br>
+                Distance: 1523.67pix<br>
+                Gravity: 0.0100pix/frame
+            </div>
+            <ul style="margin-top: 15px;">
+                <li><strong>Speed</strong> - Current velocity magnitude</li>
+                <li><strong>Maximum Speed</strong> - Highest speed achieved this session</li>
+                <li><strong>Elevation</strong> - Height from bottom of screen</li>
+                <li><strong>Distance</strong> - Total distance traveled</li>
+                <li><strong>Gravity</strong> - Current gravity value (only shown if non-zero)</li>
+            </ul>
+        </div>
+
+        <!-- Saving -->
+        <div class="section">
+            <h2>Saving & Loading</h2>
+            <p>The game auto-saves when you return to the main menu. All saves are stored in your browser's localStorage.</p>
+            <div class="tip">
+                <strong>Paste from Clipboard:</strong> When entering world names, use <span class="key key-small">Ctrl</span>+<span class="key key-small">V</span> to paste text.
+            </div>
+            <h3>Load Game Menu</h3>
+            <ul>
+                <li><strong>Left Click</strong> - Load the selected save</li>
+                <li><strong>Right Click</strong> - Open options (Play, Delete, Rename)</li>
+            </ul>
+            <div class="warning">
+                <strong>Note:</strong> Saves are stored in browser localStorage. Clearing browser data will delete your saves!
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="section">
+            <h2>Pro Tips</h2>
+            <ul>
+                <li>Combine <strong>bouncy mode (V)</strong> with <strong>gravity (N)</strong> for satisfying physics!</li>
+                <li>Use <strong>trail mode (4)</strong> to create cool patterns as you move</li>
+                <li>Try <strong>invisible ball (I)</strong> with <strong>dynamic background (PageDown)</strong> for a challenge</li>
+                <li>Enable <strong>edge death (Shift)</strong> to add stakes to your gameplay</li>
+                <li>Use <strong>CPU multiplayer (Windows key)</strong> to have a ball follow your movements</li>
+                <li>The background color is calculated using: cos(x * 0.01) for red and cos(y * 0.01) for green</li>
+            </ul>
+        </div>
+
+        <footer>
+            Bouncy Ball - Ported to Browser with Bridge.NET
+        </footer>
+    </div>
+</body>
+</html>
