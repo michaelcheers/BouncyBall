@@ -36,8 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ClipboardHelper.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
