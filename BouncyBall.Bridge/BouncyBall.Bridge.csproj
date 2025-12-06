@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bridge.json" />
+    <None Include="Content\Arial.spritefont">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +59,23 @@
     <Reference Include="MonoGameForBridge">
       <HintPath>..\..\MonoGameForBridge\MonoGameForBridge\bin\Debug\MonoGameForBridge.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\ball.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\black ball.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bounce.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Reject 2.WAV">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Bridge.Min.17.10.0\build\Bridge.Min.targets" Condition="Exists('..\packages\Bridge.Min.17.10.0\build\Bridge.Min.targets')" />
