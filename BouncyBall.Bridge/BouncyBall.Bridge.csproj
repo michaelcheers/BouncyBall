@@ -73,7 +73,9 @@
     <Content Include="bridge\Content\Button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="bridge\Content\on the floor.wav" />
+    <Content Include="bridge\Content\on the floor.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="bridge\Content\Reject 2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
