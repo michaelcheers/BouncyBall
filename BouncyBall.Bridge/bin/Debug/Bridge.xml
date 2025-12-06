@@ -1450,66 +1450,6 @@
             <param name="type">Specifies either CurrentAssembly or Compiler version, default is CurrentAssembly</param>
             <returns>Current assembly or Compiler version in string representation</returns>
         </member>
-        <member name="M:Bridge.Script.Delete(System.Object)">
-            <summary>
-            The delete operator removes a property from an object.
-            </summary>
-            <param name="obj">The name of an object, or an expression evaluating to an object.</param>
-            <returns>true for all cases except when the property is an own non-configurable property, in which case, false is returned in non-strict mode.</returns>
-        </member>
-        <member name="M:Bridge.Script.Delete(System.Object,System.String)">
-            <summary>
-            The delete operator removes a property from an object.
-            </summary>
-            <param name="obj">The name of an object, or an expression evaluating to an object.</param>
-            <param name="prop">The property to delete.</param>
-            <returns>true for all cases except when the property is an own non-configurable property, in which case, false is returned in non-strict mode.</returns>
-        </member>
-        <member name="M:Bridge.Script.IsUndefined(System.Object)">
-            <summary>
-            Checks if the specified object is undefined. The object passed in should be a local variable, and not a member of a class (to avoid potential script warnings).
-            </summary>
-            <param name="obj">The object to test against undefined.</param>
-            <returns>true if the object is undefined; false otherwise.</returns>
-        </member>
-        <member name="M:Bridge.Script.HasValue(System.Object)">
-            <summary>
-            Checks if the object has a value.
-            </summary>
-            <param name="obj">The object to test if there is a value.</param>
-            <returns>true if the object has a value; false otherwise.</returns>
-        </member>
-        <member name="M:Bridge.Script.IsNull(System.Object)">
-            <summary>
-            Checks if the specified object is null.
-            </summary>
-            <param name="obj">The object to test against null.</param>
-            <returns>true if the object is null; false otherwise.</returns>
-        </member>
-        <member name="M:Bridge.Script.Boolean(System.Object)">
-            <summary>
-            Converts an object into a boolean.
-            </summary>
-            <param name="obj">The object to convert.</param>
-            <returns>true if the object is not null, zero, empty string or undefined.</returns>
-        </member>
-        <member name="M:Bridge.Script.In(System.Object,System.String)">
-            <summary>
-            Generate <c>member in obj</c>.
-            </summary>
-            <param name="obj">The object to test against.</param>
-            <param name="member">The member to check if in the object.</param>
-            <returns>true if member in object; false otherwise.</returns>
-        </member>
-        <member name="M:Bridge.Script.InvokeMethod(System.Object,System.String,System.Object[])">
-            <summary>
-            Invoke a method on an object
-            </summary>
-            <param name="obj">The object to invoke the method against.</param>
-            <param name="name">The method to invoke.</param>
-            <param name="args">The arguments passed into the method.</param>
-            <returns></returns>
-        </member>
         <member name="M:Bridge.Script.Write``1(System.String,System.Object[])">
             <summary>
             Inject javascript code
