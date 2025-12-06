@@ -51,12 +51,7 @@ namespace Bouncy_Ball
 
         public Game1()
         {
-            this.graphics = new GraphicsDeviceManager((Game)this)
-            {
-                IsFullScreen = true,
-                PreferredBackBufferWidth = 800,
-                PreferredBackBufferHeight = 600
-            };
+            this.graphics = new GraphicsDeviceManager((Game)this);
             this.Content.RootDirectory = "Content";
         }
 
