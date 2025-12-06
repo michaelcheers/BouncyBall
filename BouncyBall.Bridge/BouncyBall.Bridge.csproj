@@ -52,7 +52,7 @@
       <HintPath>..\packages\Bridge.Html5.17.10.0\lib\net40\Bridge.Html5.dll</HintPath>
     </Reference>
     <Reference Include="MonoGameForBridge">
-      <HintPath>..\..\MonoGameForBridge\MonoGameForBridge\bin\Debug\MonoGameForBridge.dll</HintPath>
+      <HintPath>..\..\MonoGameForBridge-decompiled\MonoGameForBridge.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
