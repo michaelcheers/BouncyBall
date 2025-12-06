@@ -401,12 +401,24 @@ namespace Bouncy_Ball
             return ((float)Math.Round(input * 10000) / 10000);
         }
         public bool tag, last_tag;
+        private bool _firstDraw;
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            if (!_firstDraw)
+            {
+                Bridge.Html5.Document.Body.AppendChild(new Bridge.Html5.HTMLAnchorElement
+                {
+                    TextContent = "How to Play",
+                    Href = "how-to-play.html",
+                    ClassName = "help-link",
+                    Target = "_blank"
+                });
+                _firstDraw = true;
+            }
             if (asking_world_name)
             {
                 GraphicsDevice.Clear(Color.Red);
