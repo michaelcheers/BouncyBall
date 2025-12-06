@@ -104,6 +104,11 @@
             A JavaScript function object that is called whenever the readyState attribute changes. The callback is called from the user interface thread.
             </summary>
         </member>
+        <member name="F:Bridge.Html5.XMLHttpRequest.ReadyState">
+            <summary>
+            The state of the request
+            </summary>
+        </member>
         <member name="F:Bridge.Html5.XMLHttpRequest.Response">
             <summary>
             The response entity body according to responseType, as an ArrayBuffer, Blob, Document, JavaScript object (for "json"), or string. This is null if the request is not complete or was not successful.
@@ -112,6 +117,17 @@
         <member name="F:Bridge.Html5.XMLHttpRequest.ResponseText">
             <summary>
             The response to the request as text, or null if the request was unsuccessful or has not yet been sent.
+            </summary>
+        </member>
+        <member name="F:Bridge.Html5.XMLHttpRequest.ResponseType">
+            <summary>
+            Is an enumerated value that defines the response type. For possible values refer to
+            enum Bridge.Html5.XMLHttpRequestResponseType.
+            </summary>
+        </member>
+        <member name="F:Bridge.Html5.XMLHttpRequest.ResponseXML">
+            <summary>
+            The response to the request as a DOM Document object, or null if the request was unsuccessful, has not yet been sent, or cannot be parsed as XML or HTML. The response is parsed as if it were a text/xml stream. When the responseType is set to "document" and the request has been made asynchronously, the response is parsed as a text/html stream.
             </summary>
         </member>
         <member name="F:Bridge.Html5.XMLHttpRequest.Status">
@@ -127,6 +143,11 @@
         <member name="F:Bridge.Html5.XMLHttpRequest.Timeout">
             <summary>
             The number of milliseconds a request can take before automatically being terminated. A value of 0 (which is the default) means there is no timeout.
+            </summary>
+        </member>
+        <member name="F:Bridge.Html5.XMLHttpRequest.Upload">
+            <summary>
+            The upload process can be tracked by adding an event listener to upload.
             </summary>
         </member>
         <member name="F:Bridge.Html5.XMLHttpRequest.WithCredentials">
@@ -197,29 +218,6 @@
             Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent. If the request is synchronous, this method doesn't return until the response has arrived.
             </summary>
         </member>
-        <member name="M:Bridge.Html5.XMLHttpRequest.Send(System.String)">
-            <summary>
-            Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent. If the request is synchronous, this method doesn't return until the response has arrived.
-            </summary>
-            <param name="data"></param>
-        </member>
-        <member name="M:Bridge.Html5.XMLHttpRequest.SetRequestHeader(System.String,System.String)">
-            <summary>
-            Sets the value of an HTTP request header. You must call setRequestHeader() after open(), but before send(). If this method is called several times with the same header, the values are merged into one single request header.
-            </summary>
-            <param name="header">The name of the header whose value is to be set.</param>
-            <param name="value">The value to set as the body of the header.</param>
-        </member>
-        <member name="F:Bridge.Html5.XMLHttpRequest.ReadyState">
-            <summary>
-            The state of the request
-            </summary>
-        </member>
-        <member name="F:Bridge.Html5.XMLHttpRequest.Upload">
-            <summary>
-            The upload process can be tracked by adding an event listener to upload.
-            </summary>
-        </member>
         <member name="M:Bridge.Html5.XMLHttpRequest.Send(Bridge.Html5.ArrayBuffer)">
             <summary>
             Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent. If the request is synchronous, this method doesn't return until the response has arrived.
@@ -244,22 +242,24 @@
             </summary>
             <param name="data"></param>
         </member>
+        <member name="M:Bridge.Html5.XMLHttpRequest.Send(System.String)">
+            <summary>
+            Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent. If the request is synchronous, this method doesn't return until the response has arrived.
+            </summary>
+            <param name="data"></param>
+        </member>
         <member name="M:Bridge.Html5.XMLHttpRequest.Send(Bridge.Html5.FormData)">
             <summary>
             Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent. If the request is synchronous, this method doesn't return until the response has arrived.
             </summary>
             <param name="data"></param>
         </member>
-        <member name="F:Bridge.Html5.XMLHttpRequest.ResponseType">
+        <member name="M:Bridge.Html5.XMLHttpRequest.SetRequestHeader(System.String,System.String)">
             <summary>
-            Is an enumerated value that defines the response type. For possible values refer to
-            enum Bridge.Html5.XMLHttpRequestResponseType.
+            Sets the value of an HTTP request header. You must call setRequestHeader() after open(), but before send(). If this method is called several times with the same header, the values are merged into one single request header.
             </summary>
-        </member>
-        <member name="F:Bridge.Html5.XMLHttpRequest.ResponseXML">
-            <summary>
-            The response to the request as a DOM Document object, or null if the request was unsuccessful, has not yet been sent, or cannot be parsed as XML or HTML. The response is parsed as if it were a text/xml stream. When the responseType is set to "document" and the request has been made asynchronously, the response is parsed as a text/html stream.
-            </summary>
+            <param name="header">The name of the header whose value is to be set.</param>
+            <param name="value">The value to set as the body of the header.</param>
         </member>
         <member name="T:Bridge.Html5.XMLHttpRequestEventTarget">
             <summary>
@@ -1509,6 +1509,11 @@
             <param name="position">The position relative to the element</param>
             <param name="text">String to be parsed as HTML or XML and inserted into the tree.</param>
         </member>
+        <member name="T:Bridge.Html5.MarkElement">
+            <summary>
+            The HTML Mark Element represents a &lt;mark&gt; element and derives from the HTMLElement interface, but without implementing any additional properties or methods.
+            </summary>
+        </member>
         <member name="T:Bridge.Html5.HTMLTemplateElement">
             <summary>
             The template element is used to declare fragments of HTML that can be cloned and inserted in the document by script.
@@ -2433,9 +2438,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Float32Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Float32Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Float32Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Float32Array.length">
@@ -2490,9 +2495,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Float64Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Float64Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Float64Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Float64Array.length">
@@ -2546,9 +2551,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Int16Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Int16Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Int16Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Int16Array.length">
@@ -2602,9 +2607,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Int32Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Int32Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Int32Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Int32Array.length">
@@ -2657,9 +2662,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Int8Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Int8Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Int8Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Int8Array.length">
@@ -4302,6 +4307,12 @@
             <summary>
             An ARIA role for accessibility tools to determine how to represent this region,
             if there is no control. Defaults to null.
+            </summary>
+        </member>
+        <member name="T:Bridge.Html5.ReadyAttribute">
+            <summary>
+            Makes the method to be called once the page is loaded. If using jQuery2, triggers jQuery's event,
+            otherwise, uses DOMContentReady event from HTML5.
             </summary>
         </member>
         <member name="T:Bridge.Html5.TextMetrics">
@@ -17021,37 +17032,6 @@
             Clear key, but we're not sure the meaning difference from DOM_VK_CLEAR. Requires Gecko 21.0
             </summary>
         </member>
-        <member name="F:Bridge.Html5.KeyboardEventInit.Key">
-            <summary>
-            Optional and defaulting to "", of type DOMString, that sets the value of KeyboardEvent.Key.
-            </summary>
-        </member>
-        <member name="F:Bridge.Html5.KeyboardEventInit.Code">
-            <summary>
-            Optional and defaulting to "", of type DOMString, that sets the value of KeyboardEvent.Code.
-            </summary>
-        </member>
-        <member name="F:Bridge.Html5.KeyboardEventInit.Location">
-            <summary>
-            The location of the key on the keyboard or other input device.
-            Optional and defaulting to Standard (0), of type unsigned long, that sets the value of KeyboardEvent.Location.
-            </summary>
-        </member>
-        <member name="F:Bridge.Html5.KeyboardEventInit.Repeat">
-            <summary>
-            Optional and defaulting to false, of type Boolean, that sets the value of KeyboardEvent.Repeat.
-            </summary>
-        </member>
-        <member name="F:Bridge.Html5.KeyboardEventInit.IsComposing">
-            <summary>
-            Optional and defaulting to false, of type Boolean, that sets the value of KeyboardEvent.IsComposing.
-            </summary>
-        </member>
-        <member name="F:Bridge.Html5.KeyboardEventInit.Which">
-            <summary>
-            Optional and defaulting to 0, of type unsigned long, that sets the value of the deprecated KeyboardEvent.Which.
-            </summary>
-        </member>
         <member name="F:Bridge.Html5.KeyboardEventInit.AltKey">
             <summary>
             Indicates whether the ALT key was pressed when the event fired.
@@ -17838,14 +17818,14 @@
             The file reference can be saved when the form is submitted while the user is offline, so that the data can be retrieved and uploaded when the Internet connection is restored.
             </summary>
         </member>
-        <member name="F:Bridge.Html5.File.Name">
-            <summary>
-            The name of the file referenced by the File object.
-            </summary>
-        </member>
         <member name="F:Bridge.Html5.File.LastModifiedDate">
             <summary>
             The last modified Date of the file referenced by the File object.
+            </summary>
+        </member>
+        <member name="F:Bridge.Html5.File.Name">
+            <summary>
+            The name of the file referenced by the File object.
             </summary>
         </member>
         <member name="T:Bridge.Html5.FileList">
@@ -21184,9 +21164,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Uint16Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Uint16Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Uint16Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Uint16Array.length">
@@ -21240,9 +21220,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Uint32Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Uint32Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Uint32Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Uint32Array.length">
@@ -21295,9 +21275,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Uint8Array.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Uint8Array.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Uint8Array.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Uint8Array.length">
@@ -21350,9 +21330,9 @@
             <param name="i">Index position in the array.</param>
             <returns>The element in the specified position.</returns>
         </member>
-        <member name="P:Bridge.Html5.Uint8ClampedArray.BYTES_PER_ELEMENT">
+        <member name="F:Bridge.Html5.Uint8ClampedArray.BYTES_PER_ELEMENT">
             <summary>
-            Returns a number value of the element size.
+            Returns a number value of the element size. 1 in the case of an Uint8ClampedArray.
             </summary>
         </member>
         <member name="F:Bridge.Html5.Uint8ClampedArray.length">
