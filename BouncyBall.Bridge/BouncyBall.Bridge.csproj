@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bridge.json" />
-    <None Include="Content\Arial.spritefont">
+    <None Include="bridge\Content\Arial.spritefont">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -61,19 +61,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\ball.png">
+    <Content Include="bridge\Content\ball.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\black ball.png">
+    <Content Include="bridge\Content\black ball.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bounce.wav">
+    <Content Include="bridge\Content\bounce.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Button.png">
+    <Content Include="bridge\Content\Button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Reject 2.WAV">
+    <Content Include="bridge\Content\Reject 2.WAV">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
