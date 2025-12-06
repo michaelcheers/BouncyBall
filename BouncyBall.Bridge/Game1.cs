@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using InputKeys = Microsoft.Xna.Framework.Input.Keys;
 
 namespace Bouncy_Ball
 {
@@ -108,22 +107,22 @@ namespace Bouncy_Ball
             {
                 if (this.controlsenabled)
                 {
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Left) || Keyboard.GetState().IsKeyDown(InputKeys.A))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.A))
                     {
                         this.vx -= this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Right) || Keyboard.GetState().IsKeyDown(InputKeys.D))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Right) || Keyboard.GetState().IsKeyDown(Keys.D))
                     {
                         this.vx += this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Up) || Keyboard.GetState().IsKeyDown(InputKeys.W))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.W))
                     {
                         this.vy -= this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Down) || Keyboard.GetState().IsKeyDown(InputKeys.S))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Down) || Keyboard.GetState().IsKeyDown(Keys.S))
                     {
                         this.vy += this.accel;
                         this.moved = true;
@@ -136,77 +135,77 @@ namespace Bouncy_Ball
                 this.multiplayery += this.multiplayervy;
                 if (this.controlsenabled && this.multiplayercontrolsenabled)
                 {
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Left))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Left))
                     {
                         this.vx -= this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.A))
+                    if (Keyboard.GetState().IsKeyDown(Keys.A))
                         this.multiplayervx -= 0.1f;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Right))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Right))
                     {
                         this.vx += this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.D))
+                    if (Keyboard.GetState().IsKeyDown(Keys.D))
                         this.multiplayervx += 0.1f;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Up))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Up))
                     {
                         this.vy -= this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.W))
+                    if (Keyboard.GetState().IsKeyDown(Keys.W))
                         this.multiplayervy -= 0.1f;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Down))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Down))
                     {
                         this.vy += this.accel;
                         this.moved = true;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.S))
+                    if (Keyboard.GetState().IsKeyDown(Keys.S))
                         this.multiplayervy += 0.1f;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.LeftShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
                         this.multiplayeredgeofscreendie = true;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.RightShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
                         this.edgeofscreenlose = true;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.LeftControl))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                         this.multiplayeredgeofscreendie = false;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.RightControl))
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
                         this.edgeofscreenlose = false;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.CapsLock) && this.multiplayerColor != Color.Transparent)
+                    if (Keyboard.GetState().IsKeyDown(Keys.CapsLock) && this.multiplayerColor != Color.Transparent)
                     {
                         this.multiplayerColor = new Color(this.random.Next(256), this.random.Next(256), this.random.Next(256), this.random.Next(256));
                         this.actualMultiplayerColor = this.multiplayerColor;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F5))
+                    if (Keyboard.GetState().IsKeyDown(Keys.F5))
                         this.multiplayerColor = Color.Transparent;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F6))
+                    if (Keyboard.GetState().IsKeyDown(Keys.F6))
                         this.multiplayerColor = this.actualMultiplayerColor;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F7) && this.multiplayerColor != Color.Transparent)
+                    if (Keyboard.GetState().IsKeyDown(Keys.F7) && this.multiplayerColor != Color.Transparent)
                     {
                         this.multiplayerColor = Color.White;
                         this.actualMultiplayerColor = Color.White;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F8) && this.multiplayerColor != Color.Transparent)
+                    if (Keyboard.GetState().IsKeyDown(Keys.F8) && this.multiplayerColor != Color.Transparent)
                     {
                         this.multiplayerColor = Color.Black;
                         this.actualMultiplayerColor = Color.Black;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F9) && this.multiplayerColor != Color.Transparent)
+                    if (Keyboard.GetState().IsKeyDown(Keys.F9) && this.multiplayerColor != Color.Transparent)
                     {
                         this.multiplayerColor = Color.HotPink;
                         this.actualMultiplayerColor = Color.HotPink;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F10))
+                    if (Keyboard.GetState().IsKeyDown(Keys.F10))
                     {
                         this.multiplayerx = 0.0f;
                         this.multiplayery = 0.0f;
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.F11))
+                    if (Keyboard.GetState().IsKeyDown(Keys.F11))
                     {
                         this.multiplayerx = (float)(this.GraphicsDevice.Viewport.Bounds.Width / 2);
                         this.multiplayery = (float)(this.GraphicsDevice.Viewport.Bounds.Height / 2);
                     }
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.Delete))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Delete))
                     {
                         this.multiplayervx = 0.0f;
                         this.multiplayervy = 0.0f;
@@ -312,15 +311,15 @@ namespace Bouncy_Ball
             Viewport viewport;
             if (this.controlsenabled)
             {
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D6) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad6))
+                if (Keyboard.GetState().IsKeyDown(Keys.D6) || Keyboard.GetState().IsKeyDown(Keys.NumPad6))
                     this.StopWhenNotMoving = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D7) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad7))
+                if (Keyboard.GetState().IsKeyDown(Keys.D7) || Keyboard.GetState().IsKeyDown(Keys.NumPad7))
                     this.StopWhenNotMoving = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D4) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad4))
+                if (Keyboard.GetState().IsKeyDown(Keys.D4) || Keyboard.GetState().IsKeyDown(Keys.NumPad4))
                     this.clear = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.NumPad5) || Keyboard.GetState().IsKeyDown(InputKeys.D5))
+                if (Keyboard.GetState().IsKeyDown(Keys.NumPad5) || Keyboard.GetState().IsKeyDown(Keys.D5))
                     this.clear = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.T))
+                if (Keyboard.GetState().IsKeyDown(Keys.T))
                 {
                     this.x = (float)this.random.Next(0, this.GraphicsDevice.Viewport.Bounds.Width + 1);
                     Random random = this.random;
@@ -329,58 +328,58 @@ namespace Bouncy_Ball
                     int maxValue = viewport.Bounds.Height + 1;
                     this.y = (float)random.Next(minValue, maxValue);
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.C) && !(this.ballColor == Color.Transparent))
+                if (Keyboard.GetState().IsKeyDown(Keys.C) && !(this.ballColor == Color.Transparent))
                 {
                     this.ballColor = new Color(this.random.Next(0, 256), this.random.Next(0, 256), this.random.Next(0, 256), this.random.Next(0, 256));
                     this.actualColor = this.ballColor;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Enter))
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
                     this.ballColor = new Color(this.random.Next(0, 256), this.random.Next(0, 256), this.random.Next(0, 256), 0);
                     this.actualColor = this.ballColor;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemQuotes))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemQuotes))
                 {
                     this.ballColor = new Color(this.random.Next(0, 256), this.random.Next(0, 256), this.random.Next(0, 256), (int)this.ballColor.A);
                     this.actualColor = this.ballColor;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.B))
+                if (Keyboard.GetState().IsKeyDown(Keys.B))
                 {
                     this.x = 0.0f;
                     this.y = 0.0f;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.M))
+                if (Keyboard.GetState().IsKeyDown(Keys.M))
                 {
                     viewport = this.GraphicsDevice.Viewport;
                     this.x = (float)(viewport.Bounds.Width / 2);
                     viewport = this.GraphicsDevice.Viewport;
                     this.y = (float)(viewport.Bounds.Height / 2);
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.I))
+                if (Keyboard.GetState().IsKeyDown(Keys.I))
                     this.ballColor = Color.Transparent;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.H))
+                if (Keyboard.GetState().IsKeyDown(Keys.H))
                     this.ballColor = this.actualColor;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.P) && !(this.ballColor == Color.Transparent))
+                if (Keyboard.GetState().IsKeyDown(Keys.P) && !(this.ballColor == Color.Transparent))
                 {
                     this.ballColor = Color.HotPink;
                     this.actualColor = this.ballColor;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.X))
+                if (Keyboard.GetState().IsKeyDown(Keys.X))
                 {
                     this.vx = 0.0f;
                     this.vy = 0.0f;
                     this.gravity_effect = 0.0f;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.E) || Keyboard.GetState().IsKeyDown(InputKeys.Escape))
+                if (Keyboard.GetState().IsKeyDown(Keys.E) || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 {
                     // Exit not supported in browser - just reset instead
                     ResetGame();
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.V))
+                if (Keyboard.GetState().IsKeyDown(Keys.V))
                     this.bouncy = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Z))
+                if (Keyboard.GetState().IsKeyDown(Keys.Z))
                     this.bouncy = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.L))
+                if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
                     if (!this.L_Pressed_Last_Frame)
                     {
@@ -389,43 +388,43 @@ namespace Bouncy_Ball
                     }
                     this.L_Pressed_Last_Frame = true;
                 }
-                if (Keyboard.GetState().IsKeyUp(InputKeys.L))
+                if (Keyboard.GetState().IsKeyUp(Keys.L))
                     this.L_Pressed_Last_Frame = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.N))
+                if (Keyboard.GetState().IsKeyDown(Keys.N))
                     this.gravity += (float)(1.0 / 1000.0);
-                if (Keyboard.GetState().IsKeyDown(InputKeys.O) && (double)this.gravity > 0.0)
+                if (Keyboard.GetState().IsKeyDown(Keys.O) && (double)this.gravity > 0.0)
                     this.gravity -= (float)(1.0 / 1000.0);
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Q) && this.ballColor != Color.Transparent)
+                if (Keyboard.GetState().IsKeyDown(Keys.Q) && this.ballColor != Color.Transparent)
                 {
                     this.ballColor = Color.White;
                     this.actualColor = this.ballColor;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.R))
+                if (Keyboard.GetState().IsKeyDown(Keys.R))
                     this.gravity = 0.0f;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.J))
+                if (Keyboard.GetState().IsKeyDown(Keys.J))
                 {
                     this.xdrag = 1f;
                     this.ydrag = 1f;
                 }
             }
-            if (Keyboard.GetState().IsKeyDown(InputKeys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
                 ResetGame();
             }
             if (this.controlsenabled)
             {
-                if (Keyboard.GetState().IsKeyDown(InputKeys.LeftAlt) || Keyboard.GetState().IsKeyDown(InputKeys.RightAlt))
+                if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) || Keyboard.GetState().IsKeyDown(Keys.RightAlt))
                     this.multiplayer = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.U))
+                if (Keyboard.GetState().IsKeyDown(Keys.U))
                 {
                     this.xdrag = 0.99f;
                     this.ydrag = 0.99f;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.K) && (double)this.blue != (double)byte.MaxValue)
+                if (Keyboard.GetState().IsKeyDown(Keys.K) && (double)this.blue != (double)byte.MaxValue)
                     this.blue += 63f;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.F) && (double)this.blue != 0.0)
+                if (Keyboard.GetState().IsKeyDown(Keys.F) && (double)this.blue != 0.0)
                     this.blue -= 63f;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Y))
+                if (Keyboard.GetState().IsKeyDown(Keys.Y))
                 {
                     this.multiplayer = true;
                     this.multiplayerColor = Color.White;
@@ -438,35 +437,35 @@ namespace Bouncy_Ball
                 }
                 if (!this.multiplayer)
                 {
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.LeftShift) || Keyboard.GetState().IsKeyDown(InputKeys.RightShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftShift) || Keyboard.GetState().IsKeyDown(Keys.RightShift))
                         this.edgeofscreenlose = true;
-                    if (Keyboard.GetState().IsKeyDown(InputKeys.LeftControl) || Keyboard.GetState().IsKeyDown(InputKeys.RightControl))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftControl) || Keyboard.GetState().IsKeyDown(Keys.RightControl))
                         this.edgeofscreenlose = false;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.G))
+                if (Keyboard.GetState().IsKeyDown(Keys.G))
                 {
                     this.ballColor = Color.Black;
                     this.actualColor = Color.Black;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.F1))
+                if (Keyboard.GetState().IsKeyDown(Keys.F1))
                     this.enabled = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.F2))
+                if (Keyboard.GetState().IsKeyDown(Keys.F2))
                 {
                     this.enabled = true;
                     this.edgeofscreenlose = false;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.F3))
+                if (Keyboard.GetState().IsKeyDown(Keys.F3))
                     this.controlsenabled = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemPeriod))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemPeriod))
                     this.MouseMoveBasePlayer = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemQuestion))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemQuestion))
                     this.MouseMoveBasePlayer = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Divide))
+                if (Keyboard.GetState().IsKeyDown(Keys.Divide))
                 {
                     this.UpdateBackgroundColor = false;
                     this.BackroundColor = new Color(this.random.Next(0, 256), this.random.Next(0, 256), this.random.Next(0, 256));
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Tab))
+                if (Keyboard.GetState().IsKeyDown(Keys.Tab))
                 {
                     this.multiplayerx = 0.0f;
                     this.multiplayery = 0.0f;
@@ -478,11 +477,11 @@ namespace Bouncy_Ball
                     this.multiplayeredgeofscreendie = false;
                     this.multiplayercontrolsenabled = true;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemMinus))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemMinus))
                     this.multiplayercontrolsenabled = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemPlus))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemPlus))
                     this.multiplayercontrolsenabled = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.F12))
+                if (Keyboard.GetState().IsKeyDown(Keys.F12))
                 {
                     this.MultiplayerDieMultiplayerDissipear = false;
                     this.multiplayer = true;
@@ -493,9 +492,9 @@ namespace Bouncy_Ball
                     this.multiplayervy = 0.0f;
                     this.multiplayercontrolsenabled = true;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.NumLock))
+                if (Keyboard.GetState().IsKeyDown(Keys.NumLock))
                     this.MultiplayerDieMultiplayerDissipear = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Home))
+                if (Keyboard.GetState().IsKeyDown(Keys.Home))
                 {
                     this.multiplayer = true;
                     this.multiplayerColor = Color.White;
@@ -503,7 +502,7 @@ namespace Bouncy_Ball
                     this.multiplayeredgeofscreendie = false;
                     this.multiplayercontrolsenabled = true;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D3) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad3))
+                if (Keyboard.GetState().IsKeyDown(Keys.D3) || Keyboard.GetState().IsKeyDown(Keys.NumPad3))
                 {
                     if ((double)this.vx < 0.0)
                     {
@@ -526,24 +525,24 @@ namespace Bouncy_Ball
                         this.moved = true;
                     }
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D0) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad0))
+                if (Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0))
                     this.accel += (float)(1.0 / 1000.0);
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D1) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad1))
+                if (Keyboard.GetState().IsKeyDown(Keys.D1) || Keyboard.GetState().IsKeyDown(Keys.NumPad1))
                 {
                     this.accel -= (float)(1.0 / 1000.0);
                     if ((double)this.accel < 0.0)
                         this.accel = 0.0f;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D2) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad2))
+                if (Keyboard.GetState().IsKeyDown(Keys.D2) || Keyboard.GetState().IsKeyDown(Keys.NumPad2))
                     this.accel = 0.1f;
-                if ((Keyboard.GetState().IsKeyDown(InputKeys.D8) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad8)) && this.ballColor != Color.Transparent)
+                if ((Keyboard.GetState().IsKeyDown(Keys.D8) || Keyboard.GetState().IsKeyDown(Keys.NumPad8)) && this.ballColor != Color.Transparent)
                 {
                     this.ballColor = new Color((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue, this.random.Next(0, 256));
                     this.actualColor = this.ballColor;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.D9) || Keyboard.GetState().IsKeyDown(InputKeys.NumPad9))
+                if (Keyboard.GetState().IsKeyDown(Keys.D9) || Keyboard.GetState().IsKeyDown(Keys.NumPad9))
                     this.FollowBackgroundColor = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.Back))
+                if (Keyboard.GetState().IsKeyDown(Keys.Back))
                     this.FollowBackgroundColor = false;
                 MouseState state;
                 if (Mouse.GetState().LeftButton == ButtonState.Pressed)
@@ -581,26 +580,26 @@ namespace Bouncy_Ball
                         this.multiplayery = (float)state.Y;
                     }
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.PageUp))
+                if (Keyboard.GetState().IsKeyDown(Keys.PageUp))
                     this.UpdateBackgroundColor = false;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.PageDown))
+                if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
                     this.UpdateBackgroundColor = true;
-                if (Keyboard.GetState().IsKeyDown(InputKeys.End))
+                if (Keyboard.GetState().IsKeyDown(Keys.End))
                 {
                     this.BackroundColor = Color.Orange;
                     this.UpdateBackgroundColor = false;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemOpenBrackets))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemOpenBrackets))
                 {
                     this.ballColor = Color.Orange;
                     this.actualColor = Color.Orange;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemCloseBrackets))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemCloseBrackets))
                 {
                     this.actualColor.A = byte.MaxValue;
                     this.ballColor.A = byte.MaxValue;
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemBackslash))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemBackslash))
                 {
                     if (this.actualColor.A < 255)
                     {
@@ -608,7 +607,7 @@ namespace Bouncy_Ball
                         this.ballColor.A++;
                     }
                 }
-                if (Keyboard.GetState().IsKeyDown(InputKeys.OemSemicolon))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
                 {
                     if (this.actualColor.A > 0)
                     {
@@ -618,7 +617,7 @@ namespace Bouncy_Ball
                 }
                 // File I/O removed - not supported in browser
             }
-            if (Keyboard.GetState().IsKeyDown(InputKeys.F4))
+            if (Keyboard.GetState().IsKeyDown(Keys.F4))
                 this.controlsenabled = true;
             if (!this.enabled)
             {
