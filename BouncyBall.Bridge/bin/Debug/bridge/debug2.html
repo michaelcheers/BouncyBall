@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>BouncyBall - Debug WebGL</title>
+
+    <script src="bridge.js"></script>
+    <script src="bridge.console.js"></script>
+    <script src="bridge.meta.js"></script>
+    <script src="MonoGameForBridge.js"></script>
+    <script src="MonoGameForBridge.meta.js"></script>
+    <script src="BouncyBall.js"></script>
+    <script src="BouncyBall.meta.js"></script>
+    <script>
+        // Intercept the first Draw call to log WebGL state
+        var drawCount = 0;
+        var originalDraw = Microsoft.Xna.Framework.Graphics.SpriteBatch.prototype.Draw$4;
+        Microsoft.Xna.Framework.Graphics.SpriteBatch.prototype.Draw$4 = function(texture, position, sourceRectangle, color, rotation, origin, scale, effects, layerDepth) {
+            drawCount++;
+            if (drawCount <= 3) {
+                console.log('=== Draw #' + drawCount + ' ===');
+                console.log('SpriteBatch this:', this);
+                console.log('this.program:', this.program);
+                console.log('this._context:', this._context);
+                console.log('texture:', texture);
+                console.log('texture.internal:', texture.internal);
+                console.log('color:', color);
+                console.log('color.R:', color.R, 'G:', color.G, 'B:', color.B, 'A:', color.A);
+
+                // Check current WebGL program
+                var currentProgram = this._context.getParameter(this._context.CURRENT_PROGRAM);
+                console.log('Current WebGL program before draw:', currentProgram);
+                console.log('Our program:', this.program);
+                console.log('Are they the same?', currentProgram === this.program);
+
+                // Check if program is valid
+                console.log('Program linked?', this._context.getProgramParameter(this.program, this._context.LINK_STATUS));
+
+                // Get uniform location
+                var colorLoc = this._context.getUniformLocation(this.program, "u_color");
+                console.log('u_color location:', colorLoc);
+            }
+            return originalDraw.apply(this, arguments);
+        };
+
+        // Also intercept Begin to see program state
+        var originalBegin = Microsoft.Xna.Framework.Graphics.SpriteBatch.prototype.Begin;
+        Microsoft.Xna.Framework.Graphics.SpriteBatch.prototype.Begin = function() {
+            console.log('=== Begin called ===');
+            console.log('this.program:', this.program);
+            var currentProgram = this._context.getParameter(this._context.CURRENT_PROGRAM);
+            console.log('Current program at Begin:', currentProgram);
+            return originalBegin.apply(this, arguments);
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
